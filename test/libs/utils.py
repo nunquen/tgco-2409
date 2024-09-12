@@ -3,7 +3,6 @@ import requests
 import time
 
 from .fixtures import *  # noqa: F401, F403
-from unittest.mock import patch
 
 from lib.utils import (
     customer_with_max_spending,
