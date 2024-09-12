@@ -11,7 +11,7 @@ import requests
 
 class EntityUrl(Enum):
     Customer = "http://localhost:9090"
-    Invoince = "http://localhost:9092"
+    Invoice = "http://localhost:9092"
 
 
 def get_remote_data(

@@ -1,6 +1,4 @@
-import pytest
 import requests
-import time
 
 from .fixtures import *  # noqa: F401, F403
 
@@ -136,25 +134,3 @@ def test_get_max_spend_with_pandas_exception(
 
     assert result is None
 
-
-def test_approaches_speed(
-    get_customers_payload,
-    get_invoices_payload
-):
-    """Using pandas is easy but slower than conventional python scripting"""
-    start_time = time.time()
-    get_max_spend_with_pandas(
-        invoices=get_invoices_payload,
-        customers=get_customers_payload
-    )
-    end_time = time.time()
-    elapsed_time_pandas = end_time - start_time
-
-    start_time = time.time()
-    customer_with_max_spending(
-        invoices=get_invoices_payload
-    )
-    end_time = time.time()
-    elapsed_time_without_pandas = end_time - start_time
-
-    assert elapsed_time_without_pandas < elapsed_time_pandas

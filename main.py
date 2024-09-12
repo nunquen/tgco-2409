@@ -62,7 +62,7 @@ if __name__ == "__main__":
     )
 
     invoices = get_remote_data(
-        url=EntityUrl.Invoince.value
+        url=EntityUrl.Invoice.value
     )
 
     msg = second_approach(
