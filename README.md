@@ -78,7 +78,7 @@ This is a Python 3.10.9 project to be run in a linux bash terminal
 ```
 python -m venv .venv
 
-.venv/Scripts/activate.sh
+source .venv/Scripts/activate.sh
 
 pip install -r requirements.txt
 ```
