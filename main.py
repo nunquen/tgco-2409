@@ -5,17 +5,15 @@ from lib.utils import (
     get_customer,
     get_max_spend_with_pandas
 )
+import time
 
 
-def first_approach() -> str:
+def first_approach(
+    customers=dict,
+    invoices=dict
+) -> str:
     """Finding the customer that has spent the max amount without 3rd parties libraries"""
-    customers = get_remote_data(
-        url=EntityUrl.Customer.value
-    )
-
-    invoices = get_remote_data(
-        url=EntityUrl.Invoince.value
-    )
+    start_time = time.time()
 
     customer_id, max_spent = customer_with_max_spending(
         invoices=invoices
@@ -32,11 +30,33 @@ def first_approach() -> str:
         max_spent
     )
 
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"first_approach function took {elapsed_time:.4f} seconds to run.")
+
     return msg
 
 
-def second_approach():
+def second_approach(
+    customers=dict,
+    invoices=dict
+) -> any:
     """Finding the customer that has spent the max amount using pandas"""
+    start_time = time.time()
+
+    result = get_max_spend_with_pandas(
+        customers=customers,
+        invoices=invoices
+    )
+
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"second_approach function took {elapsed_time:.4f} seconds to run.")
+
+    return result
+
+
+if __name__ == "__main__":
     customers = get_remote_data(
         url=EntityUrl.Customer.value
     )
@@ -45,17 +65,14 @@ def second_approach():
         url=EntityUrl.Invoince.value
     )
 
-    result = get_max_spend_with_pandas(
+    msg = second_approach(
         customers=customers,
         invoices=invoices
     )
-
-    return result
-
-
-if __name__ == "__main__":
-    msg = first_approach()
     print(msg)
 
-    msg = second_approach()
+    msg = first_approach(
+        customers=customers,
+        invoices=invoices
+    )
     print(msg)

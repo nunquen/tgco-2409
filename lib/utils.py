@@ -35,7 +35,7 @@ def get_remote_data(
 
 
 def customer_with_max_spending(
-    invoices: List[dict]
+    invoices: dict
 ) -> Union[str, int]:
     # Dictionary to store the total amount spent by each customer
     customer_spending = {}
@@ -66,7 +66,7 @@ def customer_with_max_spending(
 
 def get_customer(
     customer_id: int,
-    customers: List[dict]
+    customers: dict
   ) -> dict:
     response = {}
 
@@ -89,8 +89,8 @@ def get_customer(
 
 
 def get_max_spend_with_pandas(
-    invoices: List[dict],
-    customers: List[dict]
+    invoices: dict,
+    customers: dict
 ):
     result = None
 
