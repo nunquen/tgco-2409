@@ -70,3 +70,25 @@ Tip: No, "I will let QA decide" is not an option
 # EVEN MORE EXTRA POINTS
 
 The team with highest test coverage will be awarded 5 extra points!
+
+# PYTHON PROJECT
+This is a Python 3.10.9 project to be run in a linux bash terminal
+
+## Install local virtual environment and requirements
+```
+python -m venv .venv
+
+.venv/Scripts/activate.sh
+
+pip install -r requirements.txt
+```
+
+## Run the program
+```
+python main.py
+```
+
+## Run the tests
+```
+pytest --cov=. test/libs/utils.py test/main.py
+```
